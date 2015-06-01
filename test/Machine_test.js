@@ -2,18 +2,19 @@
 
 require('chai').should()
 const Machine = require('../machine/Machine')
+const State   = require('../machine/State')
 
 describe('Machine', function() {
-  let machine = new Machine
-  let state   = machine.state
+  let m = new Machine
   describe('#state', function() {
-    it('should be a function', function() {
-      state.should.be.a('function')
+    let foo
+    it('should create State objects', function() {
+      m.state('foo').should.be.an.instanceof(State)
     })
 
-    it('should create State objects', function() {
-      let s = state('foo')
-      s.should.be.an.instanceof(State)
+    it('should return same object on same name', function() {
+      let foo = m.state('foo')
+      m.state('foo').should.equal(foo)
     })
   }) // #state
 

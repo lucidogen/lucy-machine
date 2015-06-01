@@ -8,16 +8,12 @@
 const State = require('./State')
 
 const Machine = function() {
-  let self = this
-  self.states = {}
-  self.state = function(name, onEnter, onLeave) {
-    return self.state_(name, onEnter, onLeave)
-  }
+  this.states = {}
 }
 
 module.exports = Machine
 
-Machine.prototype.state_ = function(name, onEnter, onLeave) {
+Machine.prototype.state = function(name, onEnter, onLeave) {
   let state = this.states[name]
   if (!state) {
     state = new State(name)
