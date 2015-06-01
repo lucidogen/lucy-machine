@@ -41,6 +41,18 @@ describe('State', function() {
     })
   })
 
+  describe('#enter', function() {
+    it('should trigger onEnter', function() {
+      let value = false
+      let s = new State('foo', function() {
+        value = 'enter.foo'
+      })
+      value.should.be.false
+      s.enter()
+      value.should.equal('enter.foo')
+    })
+  })
+
   describe('#receive', function() {
     it('should trigger action', function() {
       let value

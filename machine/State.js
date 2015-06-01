@@ -6,11 +6,14 @@
 */
 'use strict'
 
-const State = function(name) {
+const State = function(name, onEnter, onLeave) {
   this.name = name
   this.action  = {}
   this.sub     = {}
   this.current = this
+  // Set by state.Machine
+  this.onEnter = onEnter
+  this.onLeave = onLeave
 }
 
 State.prototype.on = function(event, callback) {
@@ -31,6 +34,18 @@ State.prototype.when = function(event) {
   return sub
 }
 
+State.prototype.enter = function() {
+  if (this.onEnter) {
+    this.onEnter()
+  }
+}
+
+State.prototype.leave = function() {
+  if (this.onLeave) {
+    this.onLeave()
+  }
+}
+
 const slice = Array.prototype.slice
 
 State.prototype.receive = function(event, value) {
@@ -39,6 +54,7 @@ State.prototype.receive = function(event, value) {
   if (current.back == event) {
     if (!value) {
       // move back
+      // we do not trigger 'leave' or 'enter' for pseudo-states
       this.current = this
     }
     return
@@ -48,6 +64,7 @@ State.prototype.receive = function(event, value) {
   if (sub) {
     // entering 'when' pseudo-state
     this.current = sub
+    // we do not trigger 'leave' or 'enter' for pseudo-states
     return
   }
 
