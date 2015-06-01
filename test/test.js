@@ -1,7 +1,7 @@
 'use strict'
 
 require('chai').should()
-const Machine = require('../machine/Machine')
+const Machine = require('../lib/Machine')
 
 describe('lucy-machine', function() {
   let m = require('../index')

@@ -17,17 +17,33 @@ m.state('vagina'
     // this is called on entering this new state
     
     // Load scene s1
-    app.scene('vagina')
+    app.run(scene('vagina'))
   })
 
   .on('B', function() {
     // Move to scene 'space' with transition 'fade' in 3.0 seconds
-    this.move('space', 'fade', 3.0)
+    app.run(
+      transition('fade', {duration:3.0}
+        , app.current
+        , scene('space')
+      )
+    )
+
+    // Or with some syntactic sugar if the app is aware of defaults
+    app.transition('fade', {duration:3.0}, 'space', function() {
+      m.enter('space')
+    })
+
+    // Even more sugar with default scene state naming
+    app.transition('fade', {duration:3.0}, 'space')
   })
 
   .on('C', function(v) {
-    // app.uniforms === app.current.uniforms
-    app.uniforms.destroy = v
+    app.param('destroy', v)
+    // ==> write current scene uniforms, params
+    // ==> saves this value (all values are set on scene change setup) to
+    //     avoid hardware controls from not being in sync ?
+    //     Or simply get control values back on scene load ?
   })
 
 m.state('space'

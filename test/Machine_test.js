@@ -1,8 +1,8 @@
 'use strict'
 
 require('chai').should()
-const Machine = require('../machine/Machine')
-const State   = require('../machine/State')
+const Machine = require('../lib/Machine')
+const State   = require('../lib/State')
 
 describe('Machine', function() {
   let m
