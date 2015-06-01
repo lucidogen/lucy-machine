@@ -5,7 +5,7 @@ const State = require('../machine/State')
 
 describe('State', function() {
   let s
-  before(function() {
+  beforeEach(function() {
     s = new State('foo')
   })
 
@@ -36,7 +36,7 @@ describe('State', function() {
       sc.should.not.equal(s.when('D'))
     })
 
-    it('on pseudo-state should return parent pseudo-state', function() {
+    it('should should set on root when chained', function() {
       s.when('C').when('D').should.equal(s.when('D'))
     })
   })
@@ -74,7 +74,10 @@ describe('State', function() {
       let values = []
       let ret_value = {}
       s
-        .on('B', function(v) {
+        .on('A', function() {
+            values.push('on.A')
+          })
+        .on('B', function() {
             values.push('on.B')
           })
         .when('C')
@@ -82,12 +85,18 @@ describe('State', function() {
               values.push('when.C.B')
             })
       s.receive('B')
+      s.receive('A')
       s.receive('C', 1)
+      s.receive('B')
+      s.receive('A')
       s.receive('B')
       s.receive('C', 0)
       s.receive('B')
       values.should.deep.equal(
         [ 'on.B'
+        , 'on.A'
+        , 'when.C.B'
+        , 'on.A'
         , 'when.C.B'
         , 'on.B'
         ]

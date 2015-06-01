@@ -69,9 +69,11 @@ State.prototype.receive = function(event, value) {
   }
 
   let clbk = current.action[event]
+  if (!clbk && this != current) {
+    clbk = this.action[event]
+  }
   if (clbk) {
-    let args = slice.call(arguments, 1)
-    return clbk.apply(current, slice.call(arguments, 1))
+    return clbk.apply(null, slice.call(arguments, 1))
   } else {
     return false
   }

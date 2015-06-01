@@ -33,7 +33,7 @@ describe('Machine', function() {
   })
 
   describe('#receive', function() {
-    it('BB should update machine with event', function() {
+    it('should update machine with event', function() {
       let values = []
       m.state('foo', function() {
           values.push('foo.enter')
