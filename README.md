@@ -64,7 +64,7 @@ Usage example:
 ## Installation
 
 ```shell
-  npm install git+ssh://git@bitbucket.org/lucidogen/lucy-machine.git
+  npm install --save git+ssh://git@bitbucket.org/lucidogen/lucy-machine.git
 ```
 
 ## Tests
