@@ -16,7 +16,7 @@ Usage example:
 
     .on('next', function() {
         // change state
-        return state('bing')
+        return m.state('bing')
       })
 
   m.state('bing', function() {
@@ -30,7 +30,7 @@ Usage example:
 
     .on('prev', function() {
         // change state
-        return state('init')
+        return m.state('init')
       })
 
   // In any state (= default mappings)
@@ -39,7 +39,7 @@ Usage example:
     })
     .on('I', function() {
         // Whenever we receive 'I', we move to init state
-        return state('init')
+        return m.state('init')
       })
 
     .when('B')  // while B event is true
