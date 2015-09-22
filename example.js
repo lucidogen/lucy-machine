@@ -12,12 +12,12 @@ const app = require('lucy-app'))
 /* First scene blah blah.
  *
  */
-m.state('vagina'
+m.state('cards'
   , function() {
     // this is called on entering this new state
     
     // Load scene s1
-    app.run(scene('vagina'))
+    app.run(scene('cards'))
   })
 
   .on('B', function() {

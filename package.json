@@ -1,34 +1,34 @@
 {
   "name": "lucy-machine",
   "version": "0.1.0",
-  "description": "State machine to control applications.",
-  "main": "index.js",
+  "description": "State machine to control workflow.",
+  "main": "lib/index.js",
+  "license": "MIT",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:lucidogen/lucy-machine.git"
+    "url": "git+ssh://git@github.com/lucidogen/lucy-machine.git"
   },
   "keywords": [
-    "application",
-    "multimedia",
-    "runtime"
+    "state machine",
+    "machine",
+    "state",
+    "workflow"
   ],
   "author": "Gaspard Bucher <gaspard@lucidogen.io> (http://lucidogen.io/)",
-  "licenses": [
-    {
-      "type": "commercial",
-      "url": "http://lucidity.io/license"
-    }
-  ],
   "bugs": {
-    "url": "https://bitbucket.org/lucidogen/lucy-machine/issues"
+    "url": "https://github.com/lucidogen/lucy-machine/issues"
   },
   "devDependencies": {
     "chai": "^2.3.0",
     "mocha": "~1.16.2"
   },
   "dependencies": {
+  },
+  "homepage": "https://github.com/lucidogen/lucy-machine#readme",
+  "directories": {
+    "test": "test"
   }
 }

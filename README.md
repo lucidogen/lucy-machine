@@ -63,13 +63,13 @@ Usage example:
 
 ## Installation
 
-```shell
+```sh
   npm install --save git+ssh://git@bitbucket.org/lucidogen/lucy-machine.git
 ```
 
 ## Tests
 
-```shell
+```sh
    npm test
 ```
 
@@ -83,4 +83,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Release History
 
-* 0.1.0 Initial release
+  * 0.1.0 () Initial release
